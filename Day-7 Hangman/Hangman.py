@@ -13,7 +13,7 @@ print(lives.lives[6])
 
 # generate a random word
 generate_word = random.choice(words.word_list)
-print(generate_word)
+#print(generate_word)
 
 # make word blank
 blank = []
