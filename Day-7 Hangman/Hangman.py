@@ -36,7 +36,6 @@ while not end:
         if letter == guess:
             blank[index] = letter
 
-    #print(f"{' '.join(blank)}")
     if guess not in generate_word:
         live -= 1
         show = len(lives.lives) - (live+1)
@@ -44,7 +43,9 @@ while not end:
     if live == 0:
         end = True
         print('You lose')
+
     print(f"{' '.join(blank)}")
+
     if '_' not in blank:
         end = True
-        print('You win')
+        print(f'{words.win}\nYou win')
