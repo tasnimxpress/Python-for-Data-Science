@@ -7,45 +7,67 @@ import random
 import words
 import lives
 
-live = len(lives.lives)-1
 print(lives.logo)
-print(lives.lives[6])
 
-# generate a random word
-generate_word = random.choice(words.word_list)
-#print(generate_word)
+restart = True
+while restart:
+    remain_live = len(lives.stage) - 1
+    choose_level = input(f"{lives.stage[10]}\nHey! Good luck, Keep me alive. Don't loose.\nchoose level-\nType 'beginner' or 'advanced':\n").lower()
 
-# make word blank
-blank = []
-length = len(generate_word)
-for index in range(0, length):
-    blank += '_'
-print(f"{' '.join(blank)}")
+    # generate a random word
+    generate_word = ''
+    if choose_level == 'beginner':
+        generate_word = random.choice(words.beginner)
+    elif choose_level == 'advanced':
+        generate_word = random.choice(words.advanced)
+    else:
+        choose_level = input(f"Choose right level to play.\nType 'beginner' or 'advanced':\n").lower()
+        if choose_level == 'beginner':
+            generate_word = random.choice(words.beginner)
+        elif choose_level == 'advanced':
+            generate_word = random.choice(words.advanced)
 
-end = False
-while not end:
-    # make user guess
-    guess = input('Guess: ').lower()
-    os.system('cls')
+    print(generate_word)
 
-    if guess in blank:
-        print('You already guessed this letter.\n')
-    # fill blank with guess
-    for index in range(length):
-        letter = generate_word[index]
-        if letter == guess:
-            blank[index] = letter
-
-    if guess not in generate_word:
-        live -= 1
-        show = len(lives.lives) - (live+1)
-        print(f"You guessed {guess} and it's not in the word.\nYou lose {show} live. Remain {live}\n{lives.lives[live]}")
-    if live == 0:
-        end = True
-        print('You lose')
-
+    # make word blank
+    blank = []
+    length = len(generate_word)
+    for index in range(0, length):
+        blank += '_'
     print(f"{' '.join(blank)}")
 
-    if '_' not in blank:
-        end = True
-        print(f'{words.win}\nYou win')
+    end = False
+    while not end:
+        # make user guess
+        guess = input('Guess: ').lower()
+        os.system('cls')
+
+        if guess in blank:
+            print('You already guessed this letter.\n')
+        # fill blank with guess
+        for index in range(length):
+            letter = generate_word[index]
+            if letter == guess:
+                blank[index] = letter
+
+        if guess not in generate_word:
+            remain_live -= 1
+            show = len(lives.stage) - (remain_live+1)
+            print(f"You guessed {guess} and it's not in the word.\nYou lose {show} live. Remain {remain_live}\n{lives.stage[remain_live]}")
+
+        print(f"{' '.join(blank)}")
+
+        if remain_live == 0:
+            end = True
+            print(f'You lose\nThe word was {generate_word}')
+
+
+        if '_' not in blank:
+            end = True
+            print(f'{lives.win}\nYou win')
+
+    play_again = input('Want to play again? Type "yes" or "no":\n').lower()
+
+    if play_again == 'no':
+        print("Don't forget to come again")
+        restart = False
