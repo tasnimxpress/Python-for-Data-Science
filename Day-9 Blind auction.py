@@ -1,3 +1,4 @@
+# dictionary within List (nested dictionary)
 import os
 
 bidders = []
