@@ -23,7 +23,7 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3',
 # define caesar function
 def caesar(cipher_direction, text, shift):
     output = ''
-    if cipher_direction == 'decode':
+    if cipher_direction == 'Decode':
         shift *= -1
 
     for character in text:
@@ -38,12 +38,12 @@ def caesar(cipher_direction, text, shift):
         else:
             output += character
 
-    print(output)
+    print(f"{cipher_direction}d message is {output}")
 
 # rerun code using while loop
 restart = True
 while restart:
-    direction = input("Type 'encode' to encrypt,\ntype 'decode' to decrypt:\n")
+    direction = input("Type 'encode' to encrypt,\ntype 'decode' to decrypt:\n").title()
     user_text = input("Type your message:\n").lower()
     user_shift = int(input("Type the shift number:\n"))
 
