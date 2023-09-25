@@ -12,7 +12,7 @@ print(lives.logo)
 restart = True
 while restart:
     remain_live = len(lives.stage) - 1
-    choose_level = input(f"{lives.stage[10]}\nHey! Good luck, Keep me alive. Don't loose.\nchoose level-\nType 'beginner' or 'advanced':\n").lower()
+    choose_level = input(f"{lives.stage[10]}\nHey! Good luck, Keep me alive. Don't loose.\nChoose level:\nType 'beginner' or 'advanced':\n").lower()
 
     # generate a random word
     generate_word = ''
@@ -21,13 +21,13 @@ while restart:
     elif choose_level == 'advanced':
         generate_word = random.choice(words.advanced)
     else:
-        choose_level = input(f"Choose right level to play.\nType 'beginner' or 'advanced':\n").lower()
+        choose_level = input(f"Choose right level to play.\nType 'beginner' or 'advanced': \n").lower()
         if choose_level == 'beginner':
             generate_word = random.choice(words.beginner)
         elif choose_level == 'advanced':
             generate_word = random.choice(words.advanced)
 
-    print(generate_word)
+    #print(generate_word)
 
     # make word blank
     blank = []
