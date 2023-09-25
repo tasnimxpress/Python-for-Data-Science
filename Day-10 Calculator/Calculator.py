@@ -28,7 +28,7 @@ operations = {
 }
 
 def calculator():
-    input_a = float(input('\nenter a number: '))
+    input_a = float(input('\nEnter a number: '))
 
     for operation in operations:
         print(operation)
