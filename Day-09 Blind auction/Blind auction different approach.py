@@ -14,10 +14,10 @@ def highest_bidder():
 
 running = True
 while running:
-    name = input('name: \n')
-    price = int(input('price: \n$'))
+    name = input('Name: \n')
+    price = int(input('Price: \n$'))
     bidders[name]=price
-    user = input('more user? "yes" or "no": ')
+    user = input('Is there any other user? "yes" or "no": ')
 
     if user == 'yes':
         os.system('cls')

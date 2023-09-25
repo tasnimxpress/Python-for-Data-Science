@@ -17,10 +17,10 @@ restart = True
 while restart:
 
     user_name = input("what's your name?\n")
-    bid_amount = int(input("enter your bid amount:\n"))
+    bid_amount = int(input("Enter your bid amount:\n"))
     new_bidder(name=user_name, bid=bid_amount)
 
-    new_user = input("is there any new user? Type 'yes' or 'no':\n")
+    new_user = input("Is there any new user? Type 'yes' or 'no':\n")
 
     if new_user == 'yes':
         os.system('cls')
