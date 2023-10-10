@@ -13,7 +13,6 @@ x.add_column("Pokemon Name",
 x.add_column("Type",
              ["Electric", "Water", "Fire"])
 
-
 #creating table using field_names and add_rows (methods)
 table.field_names = ["Pokemon Name", "Type"]
 table.add_rows(
