@@ -17,7 +17,7 @@ for _ in range(6):
     new_turtle = Turtle(shape="turtle")
     new_turtle.color(colors[i])
     new_turtle.penup()
-    new_turtle.goto(x=-350.0, y=-distance)
+    new_turtle.goto(x=-350.0, y=distance)
     i += 1
     distance += 40
     all_turtle.append(new_turtle)
