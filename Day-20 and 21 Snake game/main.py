@@ -4,17 +4,17 @@ from food import Food
 from score import Scorecard
 import time
 
+VERSION = 2.0
+
 screen = Screen()
 screen.setup(600, 600)
-screen.bgcolor('dim grey')
-screen.title('Snake game version 1.0')
+screen.bgcolor('black')
+screen.title(f'Snake game {VERSION}')
 screen.tracer(0)
 
-
-snake = Snake("white")
+snake = Snake()
 food = Food()
 scores = Scorecard()
-
 
 game_is_on = True
 while game_is_on:
@@ -29,26 +29,23 @@ while game_is_on:
         snake.extend()
         scores.track_score()
 
-
     #detect of collision with wall
-    if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        scores.game_over()
-        game_is_on = False
-    screen.listen()
+    if snake.head.xcor() > 300 or snake.head.xcor() < -300 or snake.head.ycor() > 300 or snake.head.ycor() < -300:
+        snake.reset_snake()
+        scores.reset_score()
 
+    screen.listen()
 
     #detect of collision with tail
     for tail in snake.segment[1:]:
         if snake.head.distance(tail) < 10:
-            game_is_on = False
-            scores.game_over()
-
+            snake.reset_snake()
+            scores.reset_score()
 
     screen.onkey(snake.up, "Up")
     screen.onkey(snake.down, "Down")
 
     screen.onkey(snake.left, "Left")
     screen.onkey(snake.right, "Right")
-
 
 screen.exitonclick()
