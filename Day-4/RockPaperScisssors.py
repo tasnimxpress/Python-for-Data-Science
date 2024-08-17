@@ -2,20 +2,41 @@
 
 import random
 
-rock = "1111"
-paper = "2222"
-scissors = "3333"
+rock = """
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+"""
+paper = """
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+"""
+scissors = """
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+"""
 
 element = [rock, paper, scissors]
 
 users_input = int(input(
-    "What do you choose? Type '0' for Paper, '1' for Rock, '2' for Scissors: "))
+    "What do you choose? Type '0' for rock, '1' for paper, '2' for Scissors: "))
 
 computer_choice = random.choice(element)
 users_choice = element[users_input]
 
+print(f"{users_choice}")
 print(f"Computers choice:\n{computer_choice}")
-print(f"Your choice:\n{users_choice}")
 
 if computer_choice == users_choice:
     print('Draw')
