@@ -3,9 +3,12 @@
 Range = int(input('Enter the number: '))
 
 total = 0
-for n in range(1, Range + 1):
-    if n % 2 == 0:
-        print(n)
-        total += n
+if Range > 1000:
+    print('Enter a value less than 1000, for speed issue.')
+else:
+    for n in range(1, Range + 1):
+        if n % 2 == 0:
+            print(n)
+            total += n
 
-print(total)
+    print(total)
