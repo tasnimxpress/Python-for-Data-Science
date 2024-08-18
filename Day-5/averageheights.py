@@ -21,10 +21,12 @@ total_sum = 0
 for i in heights:
     total_sum += i
 
-# print(total_sum)
+number_people = 0
+for n in heights:
+    number_people += 1
 
-average = round(total_sum/len(heights), 2)
+average = round(total_sum/num_people, 2)
 
 print(f'Total height: {total_sum}')
-print(f'Number of people: {len(heights)}')
+print(f'Number of people: {number_people}')
 print(f'Average height: {average}')
