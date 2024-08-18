@@ -12,19 +12,30 @@ num_letter = int(input('How many letters would you like in your password?: '))
 num_symbol = int(input('How many symbols would you like?: '))
 num_number = int(input('How many numbers would you like?: '))
 
-characters = []
+password_list = []
 for i in range(num_letter):
-    characters.append(random.choice(letters))
+    password_list.append(random.choice(letters))
 
 for i in range(num_symbol):
-    characters.append(random.choice(symbols))
+    password_list.append(random.choice(symbols))
 
 for i in range(num_number):
-    characters.append(random.choice(numbers))
+    password_list.append(random.choice(numbers))
+
+# reorder the password to make it hard to predict
+reorder_list = random.sample(password_list, len(password_list))
+
+# convert password_list to string
+password = ''.join(reorder_list)
 
 
-shuffle = random.sample(characters, len(characters))
+"Alternative Approach"
+# # reorder the password to make it hard to predict
+# random.shuffle(password_list)
 
-password = ''.join(shuffle)
+# # convert password_list to string
+# password = ""
+# for i in password_list:
+#     password += i
 
 print(password)
