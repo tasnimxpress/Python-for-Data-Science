@@ -33,3 +33,17 @@ print_hello()
 # move()
 # turn_right()
 # move()
+
+
+def jump():
+    move()
+    turn_left()
+    move()
+    turn_right()
+    move()
+    turn_right()
+    move()
+    turn_left()
+
+
+jump()
