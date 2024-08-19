@@ -35,15 +35,24 @@ print_hello()
 # move()
 
 
-def jump():
-    move()
-    turn_left()
-    move()
-    turn_right()
-    move()
-    turn_right()
-    move()
-    turn_left()
+# def jump():
+#     move()
+#     turn_left()
+#     move()
+#     turn_right()
+#     move()
+#     turn_right()
+#     move()
+#     turn_left()
 
 
-jump()
+# jump()
+
+
+# function 2
+
+def myfunction():
+    if sky == 'clear':
+        print('blue')
+    else:
+        print('hello')
