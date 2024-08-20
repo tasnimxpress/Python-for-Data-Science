@@ -31,6 +31,8 @@ lives = len(stages)
 end_game = False
 while not end_game:
     guess = input('Enter your guess: ').lower()
+    if guess in display:
+        print("You've already guessed it")
     # lives += lives
     for letter in range(0, word_length):
         if guess in chosen_word[letter]:
@@ -47,5 +49,4 @@ while not end_game:
 
     if "_" not in display:
         end_game = True
-        if "_" not in display:
-            print(f"{''.join(display)}\n'You win'")
+        print(f"{''.join(display)}\n'You win'")
