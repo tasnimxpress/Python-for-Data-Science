@@ -6,3 +6,12 @@ Originally a paper-and-pencil game, this is a virtual version of the game where 
 
 
 # For & while loop, if-else, list, string, range
+
+import random
+
+word_list = ['test', 'exam', 'below']
+chosen_word = random.choice(word_list)
+
+print(chosen_word)
+
+guess = input('Enter your guess: ').lower()
