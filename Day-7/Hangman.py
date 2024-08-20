@@ -7,12 +7,14 @@ Originally a paper-and-pencil game, this is a virtual version of the game where 
 
 # For & while loop, if-else, list, string, range, module
 import random
-from Hangman_art import stages
+from Hangman_art import stages, logo
 from word_list import random_words
 
-word_list = ['test', 'exam', 'bee']
-chosen_word = random.choice(word_list)
-print(chosen_word)
+print(f"{logo}\nWelcome to the game.\n\nGuess the word.")
+
+chosen_word = random.choice(random_words)
+# print(chosen_word)
+
 
 display = []
 for letter in chosen_word:
@@ -27,27 +29,33 @@ print(display)
 
 word_length = len(chosen_word)
 lives = len(stages)
+guess_list = []
+
 
 end_game = False
 while not end_game:
-    guess = input('Enter your guess: ').lower()
-    if guess in display:
-        print("You've already guessed it")
-    # lives += lives
+    guess = input('\nEnter your guess: ').lower()
+
+    if guess in guess_list:
+        print("\nYou've already guessed it")
+
     for letter in range(0, word_length):
         if guess in chosen_word[letter]:
             display[letter] = guess
 
-    if guess not in chosen_word:
+    print(display)
+
+    if (guess not in chosen_word) and (guess not in guess_list):
         print(
-            f"{stages[lives-1]}\nYou lost a live. Remaining life {lives - 1}\n")
+            f"\n{stages[lives-1]}\nYou guessed {guess}, Thats not in the word.\nYou lost a live. Remaining life {lives - 1}\n")
         lives -= 1
+
         if lives == 0:
             end_game = True
-            print('You lost')
+            print(f'\nYou lost.\nWord is: {chosen_word}')
 
-    print(display)
+    guess_list.append(guess)
 
     if "_" not in display:
         end_game = True
-        print(f"Word is: {''.join(display)}\nYou win")
+        print(f"\nYou win\nWord is: {''.join(display)}")
