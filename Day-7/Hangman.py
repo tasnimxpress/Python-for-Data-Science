@@ -5,9 +5,10 @@ by suggesting letters or numbers within a certain number of guesses.
 Originally a paper-and-pencil game, this is a virtual version of the game where you will play with computer generated word."""
 
 
-# For & while loop, if-else, list, string, range
+# For & while loop, if-else, list, string, range, module
 import random
 from Hangman_art import stages
+from word_list import random_words
 
 word_list = ['test', 'exam', 'bee']
 chosen_word = random.choice(word_list)
@@ -38,13 +39,13 @@ while not end_game:
     if guess not in chosen_word:
         print(f"You lost  live. remaining life {lives - 1}\n{stages[lives-1]}")
         lives -= 1
+        if lives == 0:
+            end_game = True
+            print('You lost')
 
     print(display)
 
-    if "_" not in display or lives == 0:
+    if "_" not in display:
         end_game = True
         if "_" not in display:
-            print(''.join(display))
-            print('You win')
-        else:
-            print('You lost')
+            print(f"{''.join(display)}\n'You win'")
