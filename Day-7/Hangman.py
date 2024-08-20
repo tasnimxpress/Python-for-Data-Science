@@ -16,29 +16,27 @@ print(chosen_word)
 display = []
 for letter in chosen_word:
     display.append(letter)
-print(display)
+
+# print(display)
 
 for i in range(len(display)):
     display[i] = '_'
 
 print(display)
-word_length = len(chosen_word)
-limit = len(display)
 
-lives = 3
+word_length = len(chosen_word)
+lives = 5
 
 end_game = False
 while not end_game:
     guess = input('Enter your guess: ').lower()
-    limit -= 1
-
+    # lives += lives
     for letter in range(0, word_length):
         if guess in chosen_word[letter]:
             display[letter] = guess
 
     if guess not in chosen_word:
-        print(f"{stages[lives]}\nYou lost one life. Remaining life {
-              lives - 1}")
+        print(f"You lost  live. remaining life {lives - 1}\n{stages[lives]}")
         lives -= 1
 
     print(display)
