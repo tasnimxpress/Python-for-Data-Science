@@ -12,17 +12,3 @@ def print_hello():
 
 
 print_hello()
-
-
-# While loop
-
-# syntax
-while True:
-    # Do this
-    pass
-
-
-number = 0
-while number < 10:
-    print('hello..this is true.')
-    number += 1
