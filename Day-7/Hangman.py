@@ -7,6 +7,7 @@ Originally a paper-and-pencil game, this is a virtual version of the game where 
 
 # For & while loop, if-else, list, string, range
 import random
+from Hangman_art import stages
 
 word_list = ['test', 'exam', 'bee']
 chosen_word = random.choice(word_list)
