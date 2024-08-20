@@ -25,7 +25,7 @@ for i in range(len(display)):
 print(display)
 
 word_length = len(chosen_word)
-lives = 5
+lives = len(stages)
 
 end_game = False
 while not end_game:
@@ -36,7 +36,7 @@ while not end_game:
             display[letter] = guess
 
     if guess not in chosen_word:
-        print(f"You lost  live. remaining life {lives - 1}\n{stages[lives]}")
+        print(f"You lost  live. remaining life {lives - 1}\n{stages[lives-1]}")
         lives -= 1
 
     print(display)
@@ -44,6 +44,7 @@ while not end_game:
     if "_" not in display or lives == 0:
         end_game = True
         if "_" not in display:
+            print(''.join(display))
             print('You win')
         else:
             print('You lost')
