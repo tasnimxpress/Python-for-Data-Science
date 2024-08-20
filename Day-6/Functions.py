@@ -65,15 +65,15 @@ print_hello()
 # Do this
 
 
-number = 10
-while number > 10:
-    print(number)
-    number -= 1
+# number = 10
+# while number > 10:
+#     print(number)
+#     number -= 1
 
 # number_of_hurdle = 6
 # while number_of_hurdle > 0:
-    # jump()
-    # number_of_hurdle -= 1
+# jump()
+# number_of_hurdle -= 1
 
 # at_goal() == True
 # while not at_goal():
