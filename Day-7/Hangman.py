@@ -7,58 +7,6 @@ Originally a paper-and-pencil game, this is a virtual version of the game where 
 
 # For & while loop, if-else, list, string, range
 import random
-from re import L
-stages = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
-
 
 word_list = ['test', 'exam', 'bee']
 chosen_word = random.choice(word_list)
@@ -76,26 +24,27 @@ print(display)
 word_length = len(chosen_word)
 limit = len(display)
 
-lives = len(stages)
+lives = 3
+
 end_game = False
 while not end_game:
     guess = input('Enter your guess: ').lower()
     limit -= 1
 
     for letter in range(0, word_length):
-
         if guess in chosen_word[letter]:
             display[letter] = guess
 
-        if guess not in chosen_word[letter]:
-            lives -= 1
-            print('You lost one life.')
-            print(stages[lives])
+    if guess not in chosen_word:
+        print(f"{stages[lives]}\nYou lost one life. Remaining life {
+              lives - 1}")
+        lives -= 1
 
     print(display)
 
-    if "_" not in display:
+    if "_" not in display or lives == 0:
         end_game = True
-        print('You win')
-    else:
-        print('You lost')
+        if "_" not in display:
+            print('You win')
+        else:
+            print('You lost')
