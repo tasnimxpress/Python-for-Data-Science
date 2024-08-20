@@ -5,7 +5,6 @@ by suggesting letters or numbers within a certain number of guesses.
 Originally a paper-and-pencil game, this is a virtual version of the game where you will play with computer generated word."""
 
 
-# For & while loop, if-else, list, string, range, module
 import random
 from Hangman_art import stages, logo
 from word_list import random_words
