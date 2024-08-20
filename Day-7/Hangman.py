@@ -15,3 +15,9 @@ chosen_word = random.choice(word_list)
 print(chosen_word)
 
 guess = input('Enter your guess: ').lower()
+
+for i in range(0, len(chosen_word)):
+    if guess in chosen_word[i]:
+        print('true')
+    else:
+        print('false')
