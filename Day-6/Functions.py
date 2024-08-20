@@ -17,8 +17,9 @@ print_hello()
 # While loop
 
 # syntax
-# while True:
-# Do this
+while True:
+    # Do this
+    pass
 
 
 number = 0
