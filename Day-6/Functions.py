@@ -51,8 +51,21 @@ print_hello()
 
 # function 2
 
-def myfunction():
-    if sky == 'clear':
-        print('blue')
-    else:
-        print('hello')
+# def myfunction():
+#     if sky == 'clear':
+#         print('blue')
+#     else:
+#         print('hello')
+
+
+# While loop
+
+# syntax
+# while True:
+# Do this
+
+
+number = 10
+while number > 10:
+    print(number)
+    number -= 1
