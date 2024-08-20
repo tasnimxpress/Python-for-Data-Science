@@ -39,7 +39,8 @@ while not end_game:
             display[letter] = guess
 
     if guess not in chosen_word:
-        print(f"You lost  live. remaining life {lives - 1}\n{stages[lives-1]}")
+        print(
+            f"{stages[lives-1]}\nYou lost a live. Remaining life {lives - 1}\n")
         lives -= 1
         if lives == 0:
             end_game = True
@@ -49,4 +50,4 @@ while not end_game:
 
     if "_" not in display:
         end_game = True
-        print(f"{''.join(display)}\n'You win'")
+        print(f"Word is: {''.join(display)}\nYou win")
