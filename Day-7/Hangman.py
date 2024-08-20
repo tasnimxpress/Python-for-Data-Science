@@ -11,13 +11,27 @@ import random
 
 word_list = ['test', 'exam', 'below']
 chosen_word = random.choice(word_list)
-
 print(chosen_word)
 
-guess = input('Enter your guess: ').lower()
+display = []
+for letter in chosen_word:
+    display.append(letter)
+print(display)
 
-for i in range(0, len(chosen_word)):
-    if guess in chosen_word[i]:
-        print('true')
-    else:
-        print('false')
+for i in range(len(display)):
+    display[i] = '_'
+
+print(display)
+word_length = len(chosen_word)
+limit = len(chosen_word)
+
+while limit > 0:
+    guess = input('Enter your guess: ').lower()
+    limit -= 1
+
+    for letter in range(0, word_length):
+        if guess in chosen_word[letter]:
+            display[letter] = guess
+    print(display)
+    # else:
+    #     print('false')
