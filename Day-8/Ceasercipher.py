@@ -3,7 +3,7 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
             'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-# Create a function called 'encrypt' and 'decrypt' that takes the 'text' and 'shift' as inputs.
+# Create a encryption and decription function
 
 
 def cipher_machine(cipher_direction, messege, key):
