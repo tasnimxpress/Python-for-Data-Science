@@ -1,8 +1,7 @@
-import math
 "Functions with input, arguments, parameters"
 
+import math
 # function
-
 
 from math import ceil, floor
 

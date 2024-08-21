@@ -36,7 +36,7 @@ while not cipher_work_done:
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift_amount = int(input("Type the shift number:\n"))
-
+    shift_amount = shift_amount % 26
     cipher_machine(direction, text, shift_amount)
 
     cipher_again = input(
