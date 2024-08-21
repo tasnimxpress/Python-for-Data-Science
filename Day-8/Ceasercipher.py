@@ -20,7 +20,6 @@ def cipher_machine(cipher_direction, messege, key):
                 char = alphabet[position]
             else:
                 print('Direction is required.')
-
         else:
             char = i
 
@@ -41,7 +40,7 @@ while not cipher_work_done:
     cipher_machine(direction, text, shift_amount)
 
     cipher_again = input(
-        'Do you want to cipher again? Y for Yes, N for No: ').lower()
+        "Type 'Y' if you want to cipher again? Otherwise type 'N' for No: ").lower()
     if cipher_again == 'n':
         cipher_work_done = True
         print('Goodbye!')
