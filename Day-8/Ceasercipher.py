@@ -6,47 +6,42 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 # Create a function called 'encrypt' and 'decrypt' that takes the 'text' and 'shift' as inputs.
 
 
-def encrypt(messege, key):
-    encrypted_text = []
+def cipher_machine(cipher_direction, messege, key):
+    end_text = []
     # cipher_text = ""
 
     for i in messege:
-        position = alphabet.index(i) + key
-        char = alphabet[position]
-        encrypted_text.append(char)
+        if i in alphabet:
+            if cipher_direction == 'encode':
+                position = alphabet.index(i) + key
+                char = alphabet[position]
+            elif cipher_direction == 'decode':
+                position = alphabet.index(i) - key
+                char = alphabet[position]
+            else:
+                print('Direction is required.')
+
+        else:
+            char = i
+
+        end_text.append(char)
         # cipher_text += char
 
-    print(f"The encoded text is: {"".join(encrypted_text)}")
+    print(f"The encoded text is: {"".join(end_text)}")
     # print(f"The encoded text is: {cipher_text}")
 
 
-def decrypt(chipher_text, key):
-    decrypted_text = []
+cipher_work_done = False
 
-    for i in chipher_text:
-        position = alphabet.index(i) - key
-        char = alphabet[position]
-        decrypted_text.append(char)
+while not cipher_work_done:
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift_amount = int(input("Type the shift number:\n"))
 
-    print(f"The encoded text is: {"".join(decrypted_text)}")
+    cipher_machine(direction, text, shift_amount)
 
-
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-
-text = input("Type your message:\n").lower()
-shift_amount = int(input("Type the shift number:\n"))
-
-# cipher_work_done = True
-
-# while not cipher_work_done:
-if direction == 'encode':
-    encrypt(text, shift_amount)
-elif direction == 'decode':
-    decrypt(text, shift_amount)
-else:
-    print('Please give a direction.')
-
-    # cipher_again = input('Do you want to chiper again? Y for Yes, N for No: ')
-
-    # if cipher_again == 'N':
-    #     cipher_work_done = True
+    cipher_again = input(
+        'Do you want to cipher again? Y for Yes, N for No: ').lower()
+    if cipher_again == 'n':
+        cipher_work_done = True
+        print('Goodbye!')
