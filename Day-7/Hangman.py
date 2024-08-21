@@ -46,7 +46,7 @@ while not end_game:
 
     if (guess not in chosen_word) and (guess not in guess_list):
         print(
-            f"\n{stages[lives-1]}\nYou guessed {guess}, Thats not in the word.\nYou lost a live. Remaining life {lives - 1}\n")
+            f"\n{stages[lives-1]}\nYou guessed {guess}, Thats not in the word.\nYou lost a live. Remaining life {lives - 1}.\n")
         lives -= 1
 
         if lives == 0:
