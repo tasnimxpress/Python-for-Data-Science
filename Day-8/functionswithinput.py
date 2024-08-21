@@ -1,54 +1,54 @@
 import math
 "Functions with input, arguments, parameters"
 
-# # function
+# function
 
 
-# from math import ceil, floor
+from math import ceil, floor
 
 
-# def greet():
-#     for n in range(3):
-#         print('Hello')
+def greet():
+    for n in range(3):
+        print('Hello')
 
 
-# greet()
+greet()
 
-# # function with input
-
-
-# def greet_with_name(name):
-#     print(f'How are you, {name}?')
+# function with input
 
 
-# greet_with_name('tasnim')
-
-# # functions with more than 1 input
-
-
-# def greet_with(name, location):
-#     print(f'How are you {name}?')
-#     print(f'How much do you know about {location}?')
+def greet_with_name(name):
+    print(f'How are you, {name}?')
 
 
-# # Positional argumrnt
-# greet_with('tasnim', 'dhaka')
-# # Keyword argument
-# greet_with(location='Dhaka', name='Tasnim')
+greet_with_name('tasnim')
+
+# functions with more than 1 input
 
 
-# # function in practice
+def greet_with(name, location):
+    print(f'How are you {name}?')
+    print(f'How much do you know about {location}?')
 
 
-# def paint_calc(height, width, cover):
-#     total_can = ceil((height * width) / cover)
-#     print(f'You need {total_can} cans of paint.')
+# Positional argumrnt
+greet_with('tasnim', 'dhaka')
+# Keyword argument
+greet_with(location='Dhaka', name='Tasnim')
 
 
-# test_h = int(input('Enter height: '))
-# test_w = int(input('Enter widht: '))
-# coverage = 5
-# paint_calc(test_h, test_w, coverage)
+# function in practice
+
+# how many cans needed to paint wall
+def paint_calc(height, width, cover):
+    total_can = ceil((height * width) / cover)
+    print(f'You need {total_can} cans of paint.')
+
+
+test_h = int(input('Enter height: '))
+test_w = int(input('Enter widht: '))
+coverage = 5
+paint_calc(test_h, test_w, coverage)
 
 
 # Is Prime number
