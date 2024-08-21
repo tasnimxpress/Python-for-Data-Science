@@ -11,13 +11,13 @@ shift = int(input("Type the shift number:\n"))
 
 
 def encrypt(messege, key):
-    plain_text = []
+    cipher_text = []
     for i in messege:
         position = alphabet.index(i) + key
         char = alphabet[position]
-        plain_text.append(char)
+        cipher_text.append(char)
 
-    print(f"The encoded text is: {"".join(plain_text)}")
+    print(f"The encoded text is: {"".join(cipher_text)}")
 
 
 encrypt(text, shift)
