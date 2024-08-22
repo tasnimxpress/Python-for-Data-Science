@@ -1,4 +1,5 @@
 """Program to add values in a dictionary without changing the code, take input from users and insert the value to the dictionary"""
+import os
 
 travel_log_list = [
     {
@@ -33,13 +34,18 @@ def add_new_city(city, place_visited, number_of_visit):
     travel_log_list.append(new_entry)
 
 
-new_city = input(f'Enter new city: ')
+os.system('cls')
+new_city = input(
+    f'You are entering a new city to your travel log.\nEnter new city: ')
+
 new_place_visited = input(f'Enter the places you visited: ').split(', ')
+
 total_visits = int(
     input(f'Enter the number of times you visited these places: '))
+os.system('cls')
 
 add_new_city(new_city, new_place_visited, total_visits)
 
 print(f"I've been to {travel_log_list[3]['City']} {
-      travel_log_list[3]['Total_visit']} times")
-print(f'My favorite place was {travel_log_list[3]['Place_visited'][0]}')
+      travel_log_list[3]['Total_visit']} times.")
+print(f'My favorite place was {travel_log_list[3]['Place_visited'][0]}.')
