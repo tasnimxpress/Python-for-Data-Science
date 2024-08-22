@@ -41,7 +41,7 @@ def result(bidding_record):
             winner['Bid'] = bidding_record[key]
 
     print(f'\nWe got the result.\n{Winner_logo}:\nThe winner is {
-        winner["Name"]} with a bid of ${winner['Bid']}.')
+        winner["Name"]} with a bid of ${winner['Bid']}')
 
 
 result(bidders)
