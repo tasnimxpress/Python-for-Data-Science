@@ -20,6 +20,7 @@ while auction_continue:
     os.system('cls')
     users = input(
         "Is there any other bidder? \nType 'Y' for yes, 'N' to close the auction: \n").lower()
+    time.sleep(1)
     os.system('cls')
 
     if users == 'n':
