@@ -31,7 +31,6 @@ def add_new_city(city, place_visited, number_of_visit):
     new_entry['Total_visit'] = number_of_visit
 
     travel_log_list.append(new_entry)
-    # print(travel_log_list)
 
 
 new_city = input(f'Enter new city: ')
@@ -40,6 +39,7 @@ total_visits = int(
     input(f'Enter the number of times you visited these places: '))
 
 add_new_city(new_city, new_place_visited, total_visits)
+
 print(f"I've been to {travel_log_list[3]['City']} {
       travel_log_list[3]['Total_visit']} times")
-print(f'My favorite city was {travel_log_list[3]['Place_visited'][1]}')
+print(f'My favorite place was {travel_log_list[3]['Place_visited'][0]}')
