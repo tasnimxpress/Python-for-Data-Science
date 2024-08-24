@@ -38,8 +38,8 @@ while is_working:
     answer = calculation(n1, n2)
     print(f'\n{n1} {operation} {n2} = {answer}')
 
-    calculate_again = input(
-        '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator: ')
+    calculate_again = input(f'\nType "y" to start a new calculation.\nType "a" to calculate with previous answer {
+                            answer}.\nType "n" to close the calculator: ')
 
     with_previous_answer = True
     while with_previous_answer:
@@ -51,8 +51,8 @@ while is_working:
             print(f'\n{answer} {operation} {n3} = {with_answer}')
             answer = with_answer
 
-            calculate_again = input(
-                '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator: ')
+            calculate_again = input(f'\nType "y" to start a new calculation.\nType "a" to calculate with previous answer {
+                answer}.\nType "n" to close the calculator: ')
 
         if calculate_again != "a":
             with_previous_answer = False
