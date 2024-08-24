@@ -9,3 +9,11 @@ def factorial(number):
 
 num = int(input('Enter number: '))
 print(factorial(num))
+
+
+# Fibonacchi series
+
+def fib(num):
+    if num == 0 or num == 1:
+        return 1
+    return fib(num - 1) + fib(num - 2)
