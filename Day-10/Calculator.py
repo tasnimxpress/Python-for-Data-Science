@@ -36,20 +36,25 @@ while is_working:
 
     calculation = symbols[operation]
     answer = calculation(n1, n2)
-    print(f'{n1} {operation} {n2} = {answer}')
+    print(f'\n{n1} {operation} {n2} = {answer}')
 
     calculate_again = input(
-        '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator\n: ')
-    if calculate_again == 'a':
-        operation = input(f'Pick another operation: ')
-        n3 = float(input('Enter third number: '))
-        calculate_with_answer = symbols[operation]
-        with_answer = calculate_with_answer(answer, n3)
-        answer = with_answer
-        print(answer)
+        '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator: ')
 
-    calculate_again = input(
-        '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator\n: ')
+    with_previous_answer = True
+    while with_previous_answer:
+        if calculate_again == 'a':
+            operation = input(f'Pick another operation: ')
+            n3 = float(input('Enter third number: '))
+            calculate_with_answer = symbols[operation]
+            with_answer = calculate_with_answer(answer, n3)
+            answer = with_answer
+            print(f'\n{answer} {operation} {n3} = {answer}')
+
+        calculate_again = input(
+            '\nType "y" to start a new calculation.\nType "a" to calculate with previous answer\nType "n" to close the calculator: ')
+        if calculate_again != "a":
+            with_previous_answer = False
 
     if calculate_again == 'n':
         is_working = False
