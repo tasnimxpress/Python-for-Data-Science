@@ -4,7 +4,8 @@ This is a simplified virtual version of Blackjack written in python"""
 
 # Capstone project - Blackjack game
 import random
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cards = [11, 2, 9, 10, 10]
 
 
 def generate_card(card_list):
@@ -41,7 +42,7 @@ def ace_count(user):
             cards[0] = 1
         else:
             cards[0]
-    return total_score(user)
+    return cards[0]
 
 
 play_again = True
@@ -67,6 +68,8 @@ while play_again:
         if another_card == 'y':
             card = generate_card(player)
 
+        print(f"\nYour card: {player}, current score: {player_score}\n")
+
         if ace(player) == True:
             ace_count(player)
 
@@ -78,11 +81,11 @@ while play_again:
 
         if blackjack(computer) == True:
             should_continue = False
-            print('You lose')
+            print('Blackjack - You lose')
 
         elif blackjack(player) == True:
             should_continue = False
-            print('You win')
+            print('Blackjack - You win')
 
         elif computer_score < 16:
             card = generate_card(computer)
@@ -90,16 +93,11 @@ while play_again:
         elif another_card == 'p':
             should_continue = False
 
-        print(f"\ncomputers first card {computer}, {computer_score}")
-        print(f"Your card: {player}, current score: {player_score}\n")
-
-    if player_score > 21:
-        print('You lose')
-    elif player_score == computer_score:
+    if player_score == computer_score:
         print('Draw')
-    elif computer_score < player_score < 21:
-        print('You win')
-    elif computer_score > 21 and player_score <= 21:
+    elif player_score > 21:
+        print('greater than 21 - You lose')
+    elif player_score <= 21 and player_score > computer_score:
         print('Your win')
     else:
         print('you lose')
