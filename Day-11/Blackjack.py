@@ -2,6 +2,7 @@
 It is the most widely played casino banking game in the world. It uses decks of 52 cards and descends from a global family of casino banking games known as "twenty-one".
 This is a simplified virtual version of Blackjack written in python"""
 
+# Capstone project - Blackjack game
 import random
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
