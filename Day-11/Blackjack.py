@@ -4,121 +4,81 @@ This is a simplified virtual version of Blackjack written in python"""
 
 # Capstone project - Blackjack game
 import random
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-# cards = [11, 2, 9, 10, 10]
+import os
 
 
-def generate_card(card_list):
-    n = random.choice(cards)
-    card_list.append(n)
-    return card_list
+def generate_card():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
 
 
-def total_score(user):
-    score = 0
-    for i in range(len(user)):
-        card_number = user[i]
-        score += card_number
-    return score
+def total_score(user_card):
+    if 11 in user_card and sum(user_card) > 21:
+        user_card.remove(11)
+        user_card.append(1)
+    if sum(user_card) == 21 and len(user_card) == 2:
+        return 0
+    return sum(user_card)
 
 
-def blackjack(user):
-    if total_score(user) == 21:
-        return True
+def compare(user_score, computer_score):
+    if user_score > 21 and computer_score > 21:
+        return "You went over. You lose 😤"
+
+    if user_score == computer_score:
+        return "Draw 🙃"
+    elif computer_score == 0:
+        return "Lose, opponent has Blackjack 😱"
+    elif user_score == 0:
+        return "Win with a Blackjack 😎"
+    elif user_score > 21:
+        return "You went over. You lose 😭"
+    elif computer_score > 21:
+        return "Opponent went over. You win 😁"
+    elif user_score > computer_score:
+        return "You win 😃"
     else:
-        return False
+        return "You lose 😤"
 
 
-def ace(user):
-    if cards[0] in user:
-        return True
-    else:
-        return False
+def blackjack():
+    computer_cards = []
+    player_cards = []
 
+    for _ in range(2):
+        player_cards.append(generate_card())
+        computer_cards.append(generate_card())
 
-def ace_count(user):
-    if ace(user) == True:
-        if total_score(user) > 21:
-            cards[0] = 1
+    play = True
+    while play:
+        computer_score = total_score(computer_cards)
+        player_score = total_score(player_cards)
+
+        print(f"Your card: {player_cards}, current score: {player_score}")
+        print(f"computers first hand {computer_cards}\n")
+
+        if player_score == 0 or computer_score == 0 or player_score > 21:
+            play = False
         else:
-            cards[0]
-    return cards[0]
+            another_card = input(
+                "\nType 'y' to get another card, 'p' to pass it: ").lower()
+            if another_card == 'y':
+                player_cards.append(generate_card())
+            else:
+                play = False
+
+        while computer_score < 16 and computer_score != 0:
+            computer_cards.append(generate_card())
+            computer_score = total_score(computer_cards)
+
+    print(f"\nYour final hand: {player_cards}, final score: {player_score}")
+    print(f"Computer's final hand: {
+          computer_cards}, final score: {computer_score}\n")
+    print(compare(player_score, computer_score))
 
 
-play_again = True
-while play_again:
-    computer = []
-    for i in range(2):
-        generate_card(computer)
-
-    player = []
-    for i in range(2):
-        generate_card(player)
-
-    computer_score = total_score(computer)
-    player_score = total_score(player)
-
-    should_continue = True
-    while should_continue:
-        print(f"\ncomputers first card {computer}: {computer_score}")
-        print(f"Your card: {player}, current score: {player_score}\n")
-
-        if blackjack(computer) == True:
-            should_continue = False
-        if blackjack(player) == True:
-            should_continue = False
-
-        another_card = input(
-            "\nType 'y' to get another card, 'p' to pass it: ").lower()
-        if another_card == 'y':
-            card = generate_card(player)
-
-        player_score = total_score(player)
-        if player_score > 21:
-            should_continue = False
-            print('You lose')
-
-        if ace(player) == True:
-            ace_count(player)
-
-        if ace(computer) == True:
-            ace_count(computer)
-
-        if computer_score < 16:
-            card = generate_card(computer)
-        computer_score = total_score(computer)
-
-        if computer_score > 21:
-            should_continue = False
-            print('You win')
-
-        print(f"\ncomputers card {computer}, score: {computer_score}")
-        print(f"\nYour card: {player}, score: {player_score}\n")
-
-        if another_card == 'p':
-            should_continue = False
-
-    if blackjack(computer) == True:
-        should_continue = False
-        print('Blackjack - You lose')
-
-    elif blackjack(player) == True:
-        should_continue = False
-        print('Blackjack - You win')
-
-    elif player_score == computer_score:
-        print('Draw')
-
-    elif player_score > 21:
-        print('greater than 21 - You lose')
-
-    elif player_score <= 21 and player_score > computer_score:
-        print('Your win')
-
-    else:
-        print('you lose')
-
-    new_game = input(
-        "press 'n' to stop. Type any other key if you want to start a new game: ").lower()
-    if new_game == 'n':
-        play_again = False
+while input(
+        "Type 'y' to play blackjack game: ").lower() == 'y':
+    os.system('cls')
+    blackjack()
