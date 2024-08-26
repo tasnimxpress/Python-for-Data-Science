@@ -1,19 +1,30 @@
 "Flowchart is available in the current folder"
 import random
 
-EASY = 5
-HARD = 10
+LIFE = 10
 NUMBER = random.randint(1, 100)
+
+
+def attempt(difficulty_level):
+    if difficulty_level == 'hard':
+        return LIFE - 5
+    else:
+        return LIFE
+
 
 print(NUMBER)
 
-choose_level = input('Choose a Game level- Easy or Hard: ').upper()
-guess = int(input('\nEnter your guess: '))
+choose_level = input('Choose a Game level- Easy or Hard: ').lower()
 
+game_on = True
 
-def attempt(user_guess, difficulty_level):
-    if user_guess != NUMBER:
-        return difficulty_level - 1
+while game_on:
+    current_attempt = attempt(choose_level)
+    print(f'You have {current_attempt} attempts')
+    guess = int(input('\nEnter your guess: '))
+
+    if current_attempt == 0:
+        game_on = False
 
 
 if guess > NUMBER:
