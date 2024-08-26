@@ -4,8 +4,8 @@ This is a simplified virtual version of Blackjack written in python"""
 
 # Capstone project - Blackjack game
 import random
-# cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-cards = [11, 2, 9, 10, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+# cards = [11, 2, 9, 10, 10]
 
 
 def generate_card(card_list):
@@ -38,7 +38,7 @@ def ace(user):
 
 def ace_count(user):
     if ace(user) == True:
-        if total_score(user) >= 21:
+        if total_score(user) > 21:
             cards[0] = 1
         else:
             cards[0]
@@ -63,12 +63,20 @@ while play_again:
         print(f"\ncomputers first card {computer}: {computer_score}")
         print(f"Your card: {player}, current score: {player_score}\n")
 
+        if blackjack(computer) == True:
+            should_continue = False
+        if blackjack(player) == True:
+            should_continue = False
+
         another_card = input(
             "\nType 'y' to get another card, 'p' to pass it: ").lower()
         if another_card == 'y':
             card = generate_card(player)
 
-        print(f"\nYour card: {player}, current score: {player_score}\n")
+        player_score = total_score(player)
+        if player_score > 21:
+            should_continue = False
+            print('You lose')
 
         if ace(player) == True:
             ace_count(player)
@@ -76,29 +84,37 @@ while play_again:
         if ace(computer) == True:
             ace_count(computer)
 
-        computer_score = total_score(computer)
-        player_score = total_score(player)
-
-        if blackjack(computer) == True:
-            should_continue = False
-            print('Blackjack - You lose')
-
-        elif blackjack(player) == True:
-            should_continue = False
-            print('Blackjack - You win')
-
-        elif computer_score < 16:
+        if computer_score < 16:
             card = generate_card(computer)
+        computer_score = total_score(computer)
 
-        elif another_card == 'p':
+        if computer_score > 21:
+            should_continue = False
+            print('You win')
+
+        print(f"\ncomputers card {computer}, score: {computer_score}")
+        print(f"\nYour card: {player}, score: {player_score}\n")
+
+        if another_card == 'p':
             should_continue = False
 
-    if player_score == computer_score:
+    if blackjack(computer) == True:
+        should_continue = False
+        print('Blackjack - You lose')
+
+    elif blackjack(player) == True:
+        should_continue = False
+        print('Blackjack - You win')
+
+    elif player_score == computer_score:
         print('Draw')
+
     elif player_score > 21:
         print('greater than 21 - You lose')
+
     elif player_score <= 21 and player_score > computer_score:
         print('Your win')
+
     else:
         print('you lose')
 
