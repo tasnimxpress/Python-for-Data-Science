@@ -63,8 +63,7 @@ while should_continue:
             SCORE += 1
 
         else:
-            print('You lose')
-            print(f'Final score: {SCORE}')
+            print(f'Sorry, Thats wrong. Final score: {SCORE}')
             game_on = False
 
     play_again = input('\nType "y" to play again, "n" to close: ')
