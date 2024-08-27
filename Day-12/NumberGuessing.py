@@ -12,24 +12,43 @@ def attempt(difficulty_level):
         return LIFE
 
 
-print(NUMBER)
+def lives(Number, guess, turns):
+    if Number != guess:
+        return turns - 1
 
-choose_level = input('Choose a Game level- Easy or Hard: ').lower()
 
-game_on = True
+def is_correct(Number, guess):
+    if guess > Number:
+        print('Too High')
+    elif guess < Number:
+        print('Too low')
+    else:
+        print(f'You guess it correct. Number was {Number}')
 
-while game_on:
+
+def game():
+    print("Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number between 1 and 100.")
+    choose_level = input('\nChoose a Game level- Easy or Hard: ').lower()
+
+    game_on = True
     current_attempt = attempt(choose_level)
-    print(f'You have {current_attempt} attempts')
-    guess = int(input('\nEnter your guess: '))
 
-    if current_attempt == 0:
-        game_on = False
+    while game_on:
+
+        print(f'You have {current_attempt} attempts')
+        guess = int(input('\nEnter your guess: '))
+        life = lives(NUMBER, guess, current_attempt)
+
+        current_attempt = life
+        is_correct(NUMBER, guess)
+
+        if current_attempt == 0:
+            game_on = False
+            print(f'\nYou are out of life. Number was {NUMBER}')
+        if NUMBER == guess:
+            game_on = False
 
 
-if guess > NUMBER:
-    print('Too High')
-elif guess < NUMBER:
-    print('Too low')
-else:
-    print('You guess it correct.')
+while input('\nType "y" to play number guessing game: ') == 'y':
+    game()
