@@ -5,30 +5,69 @@ The objective is simple: guess which of the two cards shown is higher.
 If you get the answer correct, a new card will appear and simply guess again which you think is higher. 
 Every game has infinite questions so try your best to get a high score streak."""
 
-# 'name': 'Instagram',
-# 'follower_count': 346,
-# 'description': 'Social media platform',
-# 'country': 'United States'
-
 import random
+import time
+import os
 from art import vs, logo
 from Game_data import data
 
 
-card1 = random.choice(data)
-card2 = random.choice(data)
-
-print(f'{card1['name']}, {card1['description']}, from {
-    card1['country']}, has {card1['follower_count']} million follower.')
-
-print(vs)
-print(f'{card2['name']}, {card2['description']}, from {
-    card2['country']}')
-
-guess = input(f'\nWho has more follower? Type "A" or "B": ').lower()
+def random_card():
+    card = random.choice(data)
+    return card
 
 
-if guess == 'a' and card1['follower_count'] > card2['follower_count']:
-    print('Correct')
-else:
-    print('You lose')
+def check_answer(card1_follower, card2_follower):
+    if card1_follower > card2_follower:
+        return True
+    else:
+        return False
+
+
+SCORE = 0
+
+
+should_continue = True
+while should_continue:
+    print(f"{logo}\nWelcome to the Higher Lower game.\n")
+
+    card1 = random_card()
+    card2 = random_card()
+
+    if card1['follower_count'] == card2['follower_count']:
+        card2 = random_card()
+
+    game_on = True
+    while game_on:
+        print(f'Compare A: {card1['name']}, {card1['description']}, from {
+            card1['country']}, has {card1['follower_count']} million follower.')
+
+        print(vs)
+
+        print(f'Against B: {card2['name']}, {card2['description']}, from {
+            card2['country']}, has {card2['follower_count']} million follower.')
+
+        guess = input(f'\nWho has more follower? Type "A" or "B": ').lower()
+
+        card1_follower = card1['follower_count']
+        card2_follower = card2['follower_count']
+
+        if (check_answer(card1_follower, card2_follower) is True and guess == 'a') or (check_answer(card1_follower, card2_follower) is False and guess == 'b'):
+            print('Correct')
+            time.sleep(1)
+            os.system('cls')
+            card1 = card2
+            card2 = random_card()
+            if card1['follower_count'] == card2['follower_count']:
+                card2 = random_card()
+            SCORE += 1
+
+        else:
+            print('You lose')
+            print(f'Final score: {SCORE}')
+            game_on = False
+
+    play_again = input('\nType "y" to play again, "n" to close: ')
+    os.system('cls')
+    if play_again == 'n':
+        should_continue = False
