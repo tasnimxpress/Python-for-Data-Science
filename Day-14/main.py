@@ -40,12 +40,12 @@ while should_continue:
     game_on = True
     while game_on:
         print(f'Compare A: {card1['name']}, {card1['description']}, from {
-            card1['country']}, has {card1['follower_count']} million follower.')
+            card1['country']}.')
 
         print(vs)
 
         print(f'Against B: {card2['name']}, {card2['description']}, from {
-            card2['country']}, has {card2['follower_count']} million follower.')
+            card2['country']}.')
 
         guess = input(f'\nWho has more follower? Type "A" or "B": ').lower()
 
@@ -70,4 +70,5 @@ while should_continue:
     play_again = input('\nType "y" to play again, "n" to close: ')
     os.system('cls')
     if play_again == 'n':
+        print('Goodbye')
         should_continue = False
