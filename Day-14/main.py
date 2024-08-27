@@ -12,6 +12,13 @@ from art import vs, logo
 from Game_data import data
 
 
+def format_data(card):
+    name = card['name']
+    description = card['description']
+    card_country = card['country']
+    return (f'{name}, {description}, from {card_country}.')
+
+
 def random_card():
     card = random.choice(data)
     return card
@@ -24,45 +31,38 @@ def check_answer(card1_follower, card2_follower):
         return False
 
 
-SCORE = 0
-
-
 should_continue = True
 while should_continue:
+    SCORE = 0
     print(f"{logo}\nWelcome to the Higher Lower game.\n")
 
-    card1 = random_card()
-    card2 = random_card()
+    card_a = random_card()
+    card_b = random_card()
 
-    if card1['follower_count'] == card2['follower_count']:
-        card2 = random_card()
+    card_a_follower = card_a['follower_count']
+    card_b_follower = card_b['follower_count']
 
     game_on = True
     while game_on:
-        print(f'Compare A: {card1['name']}, {card1['description']}, from {
-            card1['country']}.')
-
+        if card_a_follower == card_b_follower:
+            card_b = random_card()
+        print(f'Compare A: {format_data(card_a)}.')
         print(vs)
-
-        print(f'Against B: {card2['name']}, {card2['description']}, from {
-            card2['country']}.')
+        print(f'Against B: {format_data(card_b)}.')
 
         guess = input(f'\nWho has more follower? Type "A" or "B": ').lower()
 
-        card1_follower = card1['follower_count']
-        card2_follower = card2['follower_count']
-
-        if (check_answer(card1_follower, card2_follower) is True and guess == 'a') or (check_answer(card1_follower, card2_follower) is False and guess == 'b'):
+        if (check_answer(card_a_follower, card_b_follower) is True and guess == 'a') or (check_answer(card_a_follower, card_b_follower) is False and guess == 'b'):
             print('Correct')
             time.sleep(1)
             os.system('cls')
-            card1 = card2
-            card2 = random_card()
-            if card1['follower_count'] == card2['follower_count']:
-                card2 = random_card()
+            card_a = card_b
+            card_b = random_card()
             SCORE += 1
+            print(f"You're right. Current score: {SCORE}")
 
         else:
+            os.system('cls')
             print(f'Sorry, Thats wrong. Final score: {SCORE}')
             game_on = False
 
