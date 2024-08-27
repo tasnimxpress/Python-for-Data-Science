@@ -46,9 +46,9 @@ while should_continue:
     while game_on:
         if card_a_follower == card_b_follower:
             card_b = random_card()
-        print(f'Compare A: {format_data(card_a)}.')
+        print(f'Compare A: {format_data(card_a)}')
         print(vs)
-        print(f'Against B: {format_data(card_b)}.')
+        print(f'Against B: {format_data(card_b)}')
 
         guess = input(f'\nWho has more follower? Type "A" or "B": ').lower()
 
@@ -56,13 +56,15 @@ while should_continue:
             print('Correct')
             time.sleep(1)
             os.system('cls')
+            print(logo)
             card_a = card_b
             card_b = random_card()
             SCORE += 1
-            print(f"You're right. Current score: {SCORE}")
+            print(f"\nYou're right. Current score: {SCORE}\n")
 
         else:
             os.system('cls')
+            print(logo)
             print(f'Sorry, Thats wrong. Final score: {SCORE}')
             game_on = False
 
