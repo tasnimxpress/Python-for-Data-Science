@@ -48,6 +48,8 @@ def game():
             print(f'\nYou are out of life. Number was {NUMBER}')
         if NUMBER == guess:
             game_on = False
+        elif life != 0:
+            print('Guess again')
 
 
 while input('\nType "y" to play number guessing game: ') == 'y':
