@@ -2,12 +2,14 @@
 
 from resources import MENU, RESOURSE
 
+PROFIT = 0
+
 
 def report(data):
     initial_report = {}
 
     initial_report['ingredients'] = data
-    initial_report['cost'] = 0
+    initial_report['cost'] = PROFIT
     return initial_report
 
 
@@ -22,12 +24,10 @@ def format(report_data):
 
 
 def remaining_resourse(customer_order, machine_capacity):
-    item_needed = MENU[customer_order]['ingredients']
-
     current_resourse = {}
-    for i in set(machine_capacity) | set(item_needed):
+    for i in set(machine_capacity) | set(customer_order):
         try:
-            remaining_resourse = machine_capacity[i] - item_needed[i]
+            remaining_resourse = machine_capacity[i] - customer_order[i]
         except:
             remaining_resourse = machine_capacity.get(i)
         current_resourse[i] = remaining_resourse
@@ -35,48 +35,29 @@ def remaining_resourse(customer_order, machine_capacity):
     return current_resourse
 
 
-# remaining_resourse = {'coffee': 58, 'milk': 50, 'water': 50}
-# MENU['espresso']['ingredients'] = {'water': 50, 'coffee': 18}
+def is_resourse_sufficient(order, remaining_resourse):
+    for item in order:
+        if order[item] > remaining_resourse[item]:
+            print(f"We dont have enough {item}")
+            return False
+    return True
 
 
-def check_resourse(order, remaining_resourse):
-    resourse_needed = MENU[order]['ingredients']
+machine_on = True
+while machine_on:
+    order = input('What do you like? (espresso/latte/cappuccino): ').lower()
 
-    for item in set(resourse_needed) | set(remaining_resourse):
-        amount_needed = resourse_needed.get(item, 0)
-        remaining_amount = remaining_resourse.get(item, 0)
+    START_REPORT = report(RESOURSE)
 
-    if amount_needed <= remaining_amount:
-        return True
+    if order == 'report':
+        print(format(START_REPORT))
+    elif order == 'off':
+        machine_on = False
     else:
-        return False
+        choice = MENU[order]['ingredients']
 
-
-order = input('What do you like? (espresso/latte/cappuccino): ').lower()
-
-START_REPORT = report(RESOURSE)
-if order == 'report':
-    print(format(START_REPORT))
-
-else:
-    machine_on = True
-    while machine_on:
-
-        order = input(
-            'What do you like? (espresso/latte/cappuccino): ').lower()
-        user = order
-        # print(user)
-
-        is_sufficient = check_resourse(order, RESOURSE)
-        if is_sufficient is True:
-            print('True')
-        else:
-            print('not enough resourse')
-        START_REPORT = report(RESOURSE)
-
-        current_resourse = remaining_resourse(order, RESOURSE)
-        RESOURSE = current_resourse
-        print(RESOURSE)
-
-        if order == 'off':
-            machine_on = False
+        check_resourse = is_resourse_sufficient(choice, RESOURSE)
+        if check_resourse is True:
+            PROFIT += MENU[order]['cost']
+            current_resourse = remaining_resourse(choice, RESOURSE)
+            RESOURSE = current_resourse
