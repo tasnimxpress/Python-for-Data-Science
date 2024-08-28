@@ -44,7 +44,6 @@ def remaining_resourse(customer_order, inventory):
     Returns:
         dict: A dictionary showing the remaining quantities of each resource in the machine's stock after subtracting the quantities required for the customer's order. If an ingredient is not needed for the order, its original value from the inventory is retained.
     """
-
     current_resourse = {}
     for i in set(inventory) | set(customer_order):
         try:
@@ -69,7 +68,7 @@ def is_resourse_sufficient(order, remaining_resourse):
     """
     for item in order:
         if order[item] > remaining_resourse[item]:
-            print(f"We dont have enough {item}")
+            print(f"\nWe dont have enough {item}")
             return False
     return True
 
@@ -87,32 +86,37 @@ def check_transaction(item_price, inserted_amount):
     """
     if item_price < inserted_amount:
         change = round(inserted_amount - item_price, 2)
-        print(f"Here is {change} dollars in change.")
+        print(f"\nHere is {change} dollars in change.")
         return True
     elif item_price == inserted_amount:
         return True
     else:
-        print("Sorry that's not enough money. Money refunded.")
+        print(f"\nSorry that's not enough money. item price ${
+              item_price}; you inserted ${round(inserted_amount, 2)} \nMoney refunded.")
         return False
 
 
+print('Welcome to the Blackberry Cafe')
 machine_on = True
 while machine_on:
-    order = input('What do you like? (espresso/latte/cappuccino): ').lower()
+    order = input('\nWhat do you like? (espresso/latte/cappuccino): ').lower()
 
     if order == 'report':
         print(format(report(RESOURSE)))
     elif order == 'clean':
         os.system('cls')
+        print('Welcome to the Blackberry Cafe')
     elif order == 'off':
         os.system('cls')
         machine_on = False
+    elif order not in ['espresso', 'latte', 'cappuccino']:
+        print(f"Sorry, We don't serve {order}")
     else:
         choice = MENU[order]['ingredients']
 
         check_resourse = is_resourse_sufficient(choice, RESOURSE)
         if check_resourse is True:
-            print('Please insert coins.')
+            print('\nPlease insert coins.')
             quarter = float(input('How many quarters: '))
             nickel = float(input('How many nickels: '))
             dime = float(input('How many dimes: '))
