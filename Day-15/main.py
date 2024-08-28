@@ -3,56 +3,68 @@
 from resources import MENU, RESOURSE
 
 
+def report(data):
+    initial_report = {}
+
+    initial_report['ingredients'] = data
+    initial_report['cost'] = 0
+    return initial_report
+
+
+# def format(report_data):
+#     data = report_data['ingredients']
+
+#     Water = data['water']
+#     Milk = data['milk']
+#     Coffee = data['coffee']
+#     Money = data["cost"]
+
+#     return (f'Water: {Water} ml\nMilk: {
+#         Milk} ml\nCoffee: {Coffee} g\nMoney: ${Money}')
+
+
 def check_resourse(customer_order, machine_capacity):
     item_needed = MENU[customer_order]['ingredients']
-    item_cost = MENU[customer_order]['cost']
 
     current_resourse = {}
     for i in RESOURSE:
         try:
             current_resourse[i] = machine_capacity[i] - item_needed[i]
-            current_resourse['money'] = item_cost
         except:
-            current_resourse[i] = machine_capacity[i]
+            pass
 
     return (current_resourse)
 
 
-def report(data):
-    initial_report = {}
-
-    initial_report['water'] = data['water']
-    initial_report['milk'] = data['milk']
-    initial_report['coffee'] = data['coffee']
-    initial_report['money'] = 0
-
-    return initial_report
-
-
-def format(report_data):
-    Water = report_data['water']
-    Milk = report_data['milk']
-    Coffee = report_data['coffee']
-    Money = report_data["money"]
-
-    return (f'Water: {Water} ml\nMilk: {
-        Milk} ml\nCoffee: {Coffee} g\nMoney: ${Money}')
-
-
 order = input('What do you like? (espresso/latte/cappuccino): ').lower()
-start_report = report(RESOURSE)
-print(format(start_report))
 
-machine_on = True
-while machine_on:
-    user = order
-    print(f'heres your {user}')
-    order = input('What do you like? (espresso/latte/cappuccino): ').lower()
-    resourses = check_resourse(user, RESOURSE)
+START_REPORT = report(RESOURSE)
+if order == 'report':
+    print(START_REPORT)
 
-    if order == 'report':
+else:
+    machine_on = True
+    while machine_on:
+
+        order = input(
+            'What do you like? (espresso/latte/cappuccino): ').lower()
+        user = order
+        print(user)
+        print(check_resourse(user, START_REPORT))
+
+        print(f'heres your {user}')
+
+        if order == 'report':
+            print(format(START_REPORT))
+        else:
+            current_resourse = check_resourse(user, RESOURSE)
+            print(current_resourse)
+            start_report = current_resourse
+        print(current_resourse)
+
+        order = input(
+            'What do you like? (espresso/latte/cappuccino): ').lower()
         resourses = check_resourse(user, RESOURSE)
-        print(format(resourses))
 
-    if order == 'off':
-        machine_on = False
+        if order == 'off':
+            machine_on = False
