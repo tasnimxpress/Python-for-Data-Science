@@ -42,11 +42,14 @@ def remaining_resourse(customer_order, machine_capacity):
 def check_resourse(order, remaining_resourse):
     resourse_needed = MENU[order]['ingredients']
 
-    for item in resourse_needed and remaining_resourse:
-        if remaining_resourse[item] >= resourse_needed[item]:
-            return True
-        else:
-            False
+    for item in set(resourse_needed) | set(remaining_resourse):
+        amount_needed = resourse_needed.get(item, 0)
+        remaining_amount = remaining_resourse.get(item, 0)
+
+    if amount_needed <= remaining_amount:
+        return True
+    else:
+        return False
 
 
 order = input('What do you like? (espresso/latte/cappuccino): ').lower()
@@ -58,15 +61,17 @@ if order == 'report':
 else:
     machine_on = True
     while machine_on:
+
+        order = input(
+            'What do you like? (espresso/latte/cappuccino): ').lower()
+        user = order
+        # print(user)
+
         is_sufficient = check_resourse(order, RESOURSE)
         if is_sufficient is True:
             print('True')
         else:
             print('not enough resourse')
-        order = input(
-            'What do you like? (espresso/latte/cappuccino): ').lower()
-        user = order
-        # print(user)
         START_REPORT = report(RESOURSE)
 
         current_resourse = remaining_resourse(order, RESOURSE)
