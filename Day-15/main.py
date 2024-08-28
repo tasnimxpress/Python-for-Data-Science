@@ -3,11 +3,18 @@
 from resources import MENU, RESOURSE
 import os
 import time
+
+GREETINGS = 'Welcome to the Blackbook Cafe'
 PROFIT = 0
 MENU_ITEM = []
 for item in MENU:
     MENU_ITEM.append(item)
-# print(MENU_ITEM)
+
+
+def window(second):
+    time.sleep(second)
+    os.system('cls')
+    print(GREETINGS)
 
 
 def report(inventory):
@@ -97,11 +104,11 @@ def check_transaction(item_price, inserted_amount):
     else:
         print(f"\nSorry that's not enough money. item price ${
               item_price}; you inserted ${round(inserted_amount, 2)} \nMoney refunded.")
+        window(7)
         return False
 
 
-greetings = 'Welcome to the Blackberry Cafe'
-print(greetings)
+print(GREETINGS)
 
 machine_on = True
 while machine_on:
@@ -111,15 +118,15 @@ while machine_on:
         print(format(report(RESOURSE)))
 
     elif order == 'clean':
-        os.system('cls')
-        print(greetings)
+        window(1)
 
     elif order == 'off':
         os.system('cls')
         machine_on = False
 
     elif order not in MENU_ITEM:
-        print(f"Sorry, We don't serve {order}")
+        print(f"\nSorry, We don't serve {order}")
+        window(2)
 
     else:
         choice = MENU[order]['ingredients']
@@ -144,6 +151,4 @@ while machine_on:
                 PROFIT += MENU[order]['cost']
                 current_resourse = remaining_resourse(choice, RESOURSE)
                 RESOURSE = current_resourse
-                time.sleep(7)
-                os.system('cls')
-                print(greetings)
+                window(7)
