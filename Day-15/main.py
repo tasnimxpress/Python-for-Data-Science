@@ -140,7 +140,7 @@ while machine_on:
             transaction = check_transaction(price, total_coins)
 
             if transaction is True:
-                print(f"\nHere is your {order}. Enjoy!")
+                print(f"\nHere is your {order}. Enjoy! ☕")
                 PROFIT += MENU[order]['cost']
                 current_resourse = remaining_resourse(choice, RESOURSE)
                 RESOURSE = current_resourse
