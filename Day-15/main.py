@@ -47,10 +47,10 @@ machine_on = True
 while machine_on:
     order = input('What do you like? (espresso/latte/cappuccino): ').lower()
 
-    START_REPORT = report(RESOURSE)
+    # START_REPORT = report(RESOURSE)
 
     if order == 'report':
-        print(format(START_REPORT))
+        print(format(report(RESOURSE)))
     elif order == 'off':
         machine_on = False
     else:
@@ -58,6 +58,7 @@ while machine_on:
 
         check_resourse = is_resourse_sufficient(choice, RESOURSE)
         if check_resourse is True:
+            print(f"Here is your {order}. Enjoy!")
             PROFIT += MENU[order]['cost']
             current_resourse = remaining_resourse(choice, RESOURSE)
             RESOURSE = current_resourse
