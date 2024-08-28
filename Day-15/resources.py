@@ -30,6 +30,7 @@ RESOURSE = {
     "coffee": 100,
 }
 
+
 # initial_report = {}
 
 # initial_report['ingredients'] = RESOURSE
@@ -38,5 +39,5 @@ RESOURSE = {
 # print(initial_report)
 
 
-# print(initial_report['ingredients']['water'])
+# print(MENU['espresso']['ingredients'])
 # print(initial_report['cost'])
