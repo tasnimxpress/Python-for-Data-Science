@@ -29,15 +29,3 @@ RESOURSE = {
     "milk": 200,
     "coffee": 100,
 }
-
-
-# initial_report = {}
-
-# initial_report['ingredients'] = RESOURSE
-# initial_report['cost'] = 0
-
-# print(initial_report)
-
-
-# print(MENU['espresso']['ingredients'])
-# print(initial_report['cost'])

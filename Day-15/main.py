@@ -4,6 +4,10 @@ from resources import MENU, RESOURSE
 import os
 import time
 PROFIT = 0
+MENU_ITEM = []
+for item in MENU:
+    MENU_ITEM.append(item)
+# print(MENU_ITEM)
 
 
 def report(inventory):
@@ -96,25 +100,32 @@ def check_transaction(item_price, inserted_amount):
         return False
 
 
-print('Welcome to the Blackberry Cafe')
+greetings = 'Welcome to the Blackberry Cafe'
+print(greetings)
+
 machine_on = True
 while machine_on:
     order = input('\nWhat do you like? (espresso/latte/cappuccino): ').lower()
 
     if order == 'report':
         print(format(report(RESOURSE)))
+
     elif order == 'clean':
         os.system('cls')
-        print('Welcome to the Blackberry Cafe')
+        print(greetings)
+
     elif order == 'off':
         os.system('cls')
         machine_on = False
-    elif order not in ['espresso', 'latte', 'cappuccino']:
+
+    elif order not in MENU_ITEM:
         print(f"Sorry, We don't serve {order}")
+
     else:
         choice = MENU[order]['ingredients']
 
         check_resourse = is_resourse_sufficient(choice, RESOURSE)
+
         if check_resourse is True:
             print('\nPlease insert coins.')
             quarter = float(input('How many quarters: '))
@@ -127,10 +138,12 @@ while machine_on:
             price = MENU[order]['cost']
 
             transaction = check_transaction(price, total_coins)
+
             if transaction is True:
                 print(f"\nHere is your {order}. Enjoy!")
                 PROFIT += MENU[order]['cost']
                 current_resourse = remaining_resourse(choice, RESOURSE)
                 RESOURSE = current_resourse
-                time.sleep(5)
+                time.sleep(7)
                 os.system('cls')
+                print(greetings)
