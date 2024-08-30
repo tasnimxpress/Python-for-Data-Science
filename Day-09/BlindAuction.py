@@ -34,6 +34,7 @@ while auction_continue:
 def result(bidding_record):
     highest_bidder = 0
     winner = {}
+
     for key in bidding_record:
         if bidding_record[key] > highest_bidder:
             highest_bidder = bidding_record[key]
