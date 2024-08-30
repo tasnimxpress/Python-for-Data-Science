@@ -1,9 +1,6 @@
 "Functions with input, arguments, parameters"
 
-import math
-# function
-
-from math import ceil, floor
+from math import ceil
 
 
 def greet():
