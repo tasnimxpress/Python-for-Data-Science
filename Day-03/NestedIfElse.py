@@ -17,11 +17,14 @@ if customer_height >= HEIGHT:
 
     if 12 <= age <= 18:
         BILL = 12
+
     elif 45 <= age <= 55:
         BILL = 0
         print('Everything will be fine, have a free ride with us.')
+
     elif age < 18:
         BILL = 7
+
     else:
         BILL = 20
 
