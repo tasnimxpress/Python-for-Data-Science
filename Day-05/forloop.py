@@ -1,3 +1,4 @@
+# For loop, range, list
 names = ['Tasnim', 'Kona', 'Munni']
 
 for name in names:
