@@ -1,3 +1,5 @@
+# Data types
+
 two_digit_number = input()
 
 first_digit = int(two_digit_number[0])
