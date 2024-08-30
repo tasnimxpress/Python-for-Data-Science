@@ -1,3 +1,4 @@
+# Randomization, List, Nested list
 """This is virtual coin toss program, You will choose side and then we will toss the program to 
 see if you win or loss."""
 
