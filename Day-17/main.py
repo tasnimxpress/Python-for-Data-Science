@@ -2,3 +2,15 @@
 
 from data import question_data
 from question_model import Question
+
+
+# create question bank
+question_bank = []
+
+for key in question_data:
+    text = key['text']
+    answer = key['answer']
+    question = Question(text, answer)
+    question_bank.append(question)
+
+print(question_bank[0].question)
