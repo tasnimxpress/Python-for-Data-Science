@@ -16,4 +16,4 @@ for key in question_data:
 
 # print(question_bank[0].question)
 quiz = QuizBrain(question_bank)
-print(brain.question.q)
+quiz.next_question()
