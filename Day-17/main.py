@@ -14,6 +14,10 @@ for key in question_data:
     question = Question(text, answer)
     question_bank.append(question)
 
+
 # print(question_bank[0].question)
 quiz = QuizBrain(question_bank)
-quiz.next_question()
+quiz_continue = True
+
+while quiz.still_has_question():
+    quiz.next_question()

@@ -11,3 +11,6 @@ class QuizBrain:
         self.question_number += 1
         input(f"Q.{self.question_number} {
               current_question.question}: (True/False) ")
+
+    def still_has_question(self):
+        return self.question_number < len(self.list)
