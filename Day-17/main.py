@@ -9,8 +9,8 @@ from question_model import Question
 question_bank = []
 
 for key in question_data:
-    text = key['text']
-    answer = key['answer']
+    text = key['question']
+    answer = key['correct_answer']
     question = Question(text, answer)
     question_bank.append(question)
 
@@ -21,3 +21,6 @@ quiz_continue = True
 
 while quiz.still_has_question():
     quiz.next_question()
+
+print("You have completed the quiz.")
+print(f"Your final score is: {quiz.score}/{quiz.question_number}")
