@@ -1,6 +1,6 @@
 import colorgram as cg
 
-image = cg.extract('Day-18/spot_paint/hirst_spot_paint.png', 4)
+image = cg.extract('Day-18/spot_paint/hirst_paint.png', 10)
 
 color_list = []
 for color in image:
