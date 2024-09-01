@@ -22,7 +22,7 @@ def angle():
 def walk(limit):
     for _ in range(limit):
         rand_color = (random.randrange(255), random.randrange(
-            255), random.randrange(255))
+            255), random.randrange(255))  # tuple
         line.pencolor(rand_color)
         to_angle = angle()
         line.setheading(to_angle)
