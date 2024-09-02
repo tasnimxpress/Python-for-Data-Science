@@ -13,7 +13,7 @@ def move_forward():
 
 screen.listen()
 # onkey is behaving as higher order function; it takes move_forward function as function input
-screen.onkey(fun=move_forward, key='right')
+screen.onkey(fun=move_forward, key='space')
 
 
 screen.exitonclick()
