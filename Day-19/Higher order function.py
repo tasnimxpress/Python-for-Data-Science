@@ -1,4 +1,6 @@
 # Higher order function
+# higher order function is a type of function that takes another function as an input
+
 from turtle import Turtle, Screen
 
 tim = Turtle()
@@ -10,6 +12,7 @@ def move_forward():
 
 
 screen.listen()
+# onkey is behaving as higher order function; it takes move_forward function as function input
 screen.onkey(fun=move_forward, key='right')
 
 
