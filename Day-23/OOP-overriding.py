@@ -1,4 +1,4 @@
-# polymorphism
+# Polymorphism
 
 class Employee:
     def __init__(self):
