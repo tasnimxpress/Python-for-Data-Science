@@ -9,4 +9,5 @@ with open('E:/GitHub/100DaysOfPython/Day-24/file.txt', 'w') as file:
 
 # write to the file without deleting the previous text : mode='a'
 with open('E:/GitHub/100DaysOfPython/Day-24/file.txt', 'a') as file:
-    file.write('\nThis is text without deleting first text')
+    s = file.write('\nThis is text without deleting first text')
+    print(type(file))
