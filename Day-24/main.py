@@ -12,7 +12,6 @@ with open('E:/GitHub/100DaysOfPython/Day-24/Input/Names/invited_names.txt', 'r')
         for name in nameList:
             readyLetter = SLetter.replace(
                 '[name]', name.strip())
-            print(readyLetter)
 
             with open(f'E:/GitHub/100DaysOfPython/Day-24/Output/ReadyToSend/LetterFor_{name.strip()}.txt', 'w') as completedLetter:
                 completedLetter.write(readyLetter)
