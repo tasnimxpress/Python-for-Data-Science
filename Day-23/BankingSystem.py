@@ -14,49 +14,57 @@
             * display their available balance.
 """
 
+from abc import ABCMeta, abstractmethod
 import random
 import csv
 import pandas as pd
 PATH = "E:/GitHub/100DaysOfPython/Day-23/AccountDetails.csv"
 
 
+class Account(metaclass=ABCMeta):
+    @abstractmethod
+    def createAccount():
+        return 0
+
+    @abstractmethod
+    def authenticate():
+        return 0
+
+    @abstractmethod
+    def withdraw():
+        return 0
+
+    @abstractmethod
+    def deposit():
+        return 0
+
+    @abstractmethod
+    def displayBalance():
+        return 0
+
+
 class Bank:
     def __init__(self):
         self.initialBalance = 0
-        self.details = []
+        self.details = {}
         self.data = pd.DataFrame(self.details)
         self.csv = self.data.to_csv(PATH)
 
     def createAccount(self, name, deposit):
-        num = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], k=5)
-        pin = int(''.join(map(str, num)))
-        self.initialBalance += deposit
-        with open(PATH, 'a', newline='') as file:
-            raw = csv.writer(file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-            raw.writerow([{pin}, {deposit}, {name}])
-            self.details.append(raw)
-            print(raw)
+        pin = random.randint(10000, 99999)
+        self.details[pin] = [name, deposit]
 
-        # account = {'pin': pin,
-        #            'name': name,
-        #            'balance': deposit}
+    def authenticate(name, accountNumber):
+        pass
 
-        # self.details.append(account)
-        # # self.data.loc[2.5] = 30.0, 1.3
-        # self.data.loc[-1] = pin, name, deposit
-        # self.data = self.data.sort_index().reset_index(drop=True)
+    def withdraw(self, amount):
+        pass
 
-        # self.data = pd.DataFrame(self.details)
-        # self.csv = self.data.to_csv(PATH)
-        # return self.data
+    def deposti(self, amount):
+        pass
 
-    def userData(self):
-        # self.csv = self.data.to_csv(PATH)
-        print(self.data)
-
-    def displayDetails(self):
-        # df = pd.DataFrame(self.details)
-        print(self.details)
+    def displayBalance(self):
+        pass
 
 
 class customer:
