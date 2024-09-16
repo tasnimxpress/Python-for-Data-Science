@@ -1,6 +1,8 @@
 # read weather data
 
-with open('weather-data.csv') as file:
-    for _ in file:
-        data = file.readlines()
-        print(data)
+import pandas as pd
+
+data = pd.read_csv('weather-data.csv')
+# print(data)
+print(data.loc[0, 'day'])
+print(data.at[0, 'day'])
