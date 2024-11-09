@@ -24,6 +24,7 @@ def division(answer):
     return (X, Y)
 
 
+all_division = df['division'].values
 score = 0
 length = len(df)
 all_answer = []
@@ -37,14 +38,14 @@ while score != length:
 
     if answer == 'Exit':
         missing_div = []
-        for division in df['division'].values:
+        for division in all_division:
             if division not in all_answer:
                 missing_div.append(division)
         missing_data = pd.DataFrame(missing_div)
         missing_data.to_csv(
             'E:/GitHub/100DaysOfPython/Day-25/missing_division.csv')
         break
-    elif answer in df['division'].values and answer not in all_answer:
+    elif answer in all_division and answer not in all_answer:
         position = division(answer)
         t.goto(position)
         all_answer.append(answer)
